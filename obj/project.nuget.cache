@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "iDafsrvQk6SIUCMaldj+sOe0ZjDQy5HUxzuT6GZ8qU4ryebb5Sad14INNgkTv25UAO3VZk5EcFntpcTyTHvkrg==",
+  "dgSpecHash": "vwB33iik54okdBBcZ6OVaFuLZMFl848V6eC6DO5xx3uWDsw3dLCRsxH1bR7+TbBNwaPaaRRe701UChhdhl1ORw==",
   "success": true,
   "projectFilePath": "/home/rab/Documents/Projects/ECommerceAPI/ECommerce.csproj",
   "expectedPackageFiles": [
+    "/home/rab/.nuget/packages/dapper/2.0.123/dapper.2.0.123.nupkg.sha512",
     "/home/rab/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/rab/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
     "/home/rab/.nuget/packages/microsoft.data.sqlclient/2.1.4/microsoft.data.sqlclient.2.1.4.nupkg.sha512",
@@ -34,6 +35,8 @@
     "/home/rab/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
     "/home/rab/.nuget/packages/microsoft.win32.registry/4.7.0/microsoft.win32.registry.4.7.0.nupkg.sha512",
     "/home/rab/.nuget/packages/microsoft.win32.systemevents/4.7.0/microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "/home/rab/.nuget/packages/npgsql/6.0.7/npgsql.6.0.7.nupkg.sha512",
+    "/home/rab/.nuget/packages/npgsql.entityframeworkcore.postgresql/6.0.7/npgsql.entityframeworkcore.postgresql.6.0.7.nupkg.sha512",
     "/home/rab/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "/home/rab/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "/home/rab/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
