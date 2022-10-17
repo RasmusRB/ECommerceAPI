@@ -7,5 +7,6 @@ namespace ECommerceAPI.Models.Products
         Task<IEnumerable<Product>> GetProducts();
         Task<Product> GetProductById(int id);
         Task<Product> CreateProduct(DynamicParameters product);
+        Task<Product> DeleteProduct(int id);
     }
 }

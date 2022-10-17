@@ -10,7 +10,7 @@ namespace ECommerceAPI.Managers
             private string? _connectionString;
             private string? GetAllQuery = @"SELECT * FROM products";
             private string? GetProductQuery = @"SELECT * FROM products WHERE id = @id";
-            private string? CreateProductQuery = @"INSERT INTO products (id, title, price, description, category, quantity, rating) VALUES (@id, @title, @price, @description, @category, @quantity, @rating)";
+            private string? CreateProductQuery = @"INSERT INTO products (title, price, description, category, quantity, rating) VALUES (@title, @price, @description, @category, @quantity, @rating) returning id";
             private string? DeleteProductQuery = @"DELETE FROM products WHERE id = @id";
 
             public ProductsManager(IConfiguration config)
@@ -35,8 +35,17 @@ namespace ECommerceAPI.Managers
         public async Task<Product> CreateProduct(DynamicParameters product)
         {
             using IDbConnection db = new NpgsqlConnection(_connectionString);
-            var res = await db.QueryAsync<Product>(CreateProductQuery);
+            var res = await db.QueryAsync<Product>(CreateProductQuery, product);
             return res.FirstOrDefault();
+        }
+
+        public async Task<Product> DeleteProduct(int id)
+        {
+            var userParams = new DynamicParameters();
+            userParams.Add("@id", id);
+
+            using IDbConnection db = new NpgsqlConnection(_connectionString);
+            return db.Query<Product>(DeleteProductQuery, userParams).FirstOrDefault();
         }
     }
 }

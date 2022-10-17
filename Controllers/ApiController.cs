@@ -17,46 +17,45 @@ namespace ECommerceAPI.Controllers
         }
 
         [HttpGet]
+        [Route("products")]
         public async Task<ActionResult<Product>> GetProducts()
         {
-            try {
-                var products = await Task.FromResult(_product.GetProducts());
+                var products = await _product.GetProducts();
                 return Ok(products);
-            } catch (Npgsql.PostgresException e) {
-                return BadRequest(e.Message);
-            }
         }
+          
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("products/{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            try {
-                var product = await Task.FromResult(_product.GetProductById(id));
+                var product = await _product.GetProductById(id);
                 return Ok(product);
-            } catch (Npgsql.PostgresException e) {
-                return BadRequest(e.Message);
-            }
+           
         }
 
         [HttpPost]
-        public async Task<ActionResult<Product>> CreateProduct([FromForm] Product product)
+        [Route("products/create")]
+        public async Task<ActionResult<Product>> CreateProduct([FromForm] Product_Create cProduct)
         {
-            try {
+               var userParams = new DynamicParameters();
+                userParams.Add("@title", cProduct.Title);
+                userParams.Add("@price", cProduct.Price);
+                userParams.Add("@description", cProduct.Description);
+                userParams.Add("@category", cProduct.Category);
+                userParams.Add("@quantity", cProduct.Quantity);
+                userParams.Add("@rating", cProduct.Rating);
 
-                var userParams = new DynamicParameters();
-                userParams.Add("id", product.Id);
-                userParams.Add("title", product.Title);
-                userParams.Add("description", product.Description);
-                userParams.Add("price", product.Price);
-                userParams.Add("quantity", product.Quantity);
-                userParams.Add("rating", product.Rating);
-                userParams.Add("category", product.Category);
+                var product = await _product.CreateProduct(userParams);
+                return Ok(product.Id);
+        }
 
-                var result = await Task.FromResult(_product.CreateProduct(userParams));  
-                return Ok(result);
-            } catch (Npgsql.PostgresException e) {
-                return BadRequest(e.Message);
-            }
+        [HttpDelete]
+        [Route("products/delete/{id}")]
+        public async Task<ActionResult<Product>> DeleteProduct(int id)
+        {
+            var deleted = await _product.DeleteProduct(id);
+            return Ok(deleted.Id);
         }
     }
 }
